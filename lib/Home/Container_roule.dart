@@ -121,7 +121,7 @@ class _ArticleState extends State<Article> {
         children: [
           Container(
             height: Dimension.pageViewContainer,
-            margin: EdgeInsets.only(left: 10, right: 10),
+            margin: EdgeInsets.only(left: 11, right: 12),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
@@ -135,9 +135,9 @@ class _ArticleState extends State<Article> {
             alignment: Alignment.bottomCenter,
             child: Container(
               height: Dimension.pageViewTextContainer,
-              margin: EdgeInsets.only(left: 3, right: 30, bottom: 30),
+              margin: EdgeInsets.only(left: 30, right: 30, bottom: 30),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(31),
                 color: Colors.white,
                 // Create the shadow on the white container of the photo
                 boxShadow: [
