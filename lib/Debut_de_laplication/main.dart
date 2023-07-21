@@ -1,9 +1,12 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:experiance/Debut_de_laplication/login.dart';
 import 'package:experiance/Widget/MyHomePage.dart';
+import 'package:experiance/firebase/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import '../firebase/firebase_options.dart';
 
 
@@ -20,7 +23,17 @@ void main() async {
 
 
 
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        StreamProvider.value(
+          initialData: null,
+          value: AuthService().user,
+        )
+      ],
+      child: const MyApp(),
+    )
+  );
 }
 
 
@@ -67,9 +80,9 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
       ),
       backgroundColor: Color.fromARGB(255, 235, 16, 19),
-      nextScreen: MyHomePage(),
+      nextScreen: const login(), //MyHomePage(),
       splashIconSize: 800.0, // Corrected the splashIconSize
-      duration: 3000,
+      duration: 4000,
       splashTransition: SplashTransition.sizeTransition,
       //pageTransitionType: PageTransitionType.topToBottom,
       animationDuration: const Duration(),
