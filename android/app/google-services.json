@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "271856290590",
+    "project_id": "estateagency-5e471",
+    "storage_bucket": "estateagency-5e471.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271856290590:android:835f268dc1916c7ca8570f",
+        "android_client_info": {
+          "package_name": "com.example.experiance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271856290590-vq8kr49s2qa1lk2mb94ntqr55kca57g4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABdRsntR5QSmyBoAkGp0uixcd8mdBGEt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271856290590-vq8kr49s2qa1lk2mb94ntqr55kca57g4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

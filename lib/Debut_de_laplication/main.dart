@@ -3,9 +3,22 @@ import 'package:experiance/Widget/MyHomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
+import '../firebase/firebase_options.dart';
 
 
 void main() async {
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    print(e);
+    print('Firebase initialization error');
+  }
+
+
 
   runApp(const MyApp());
 }

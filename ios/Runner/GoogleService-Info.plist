@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>271856290590-c195g7b4130r6l7olunh3uivk9upbmav.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.271856290590-c195g7b4130r6l7olunh3uivk9upbmav</string>
+	<key>API_KEY</key>
+	<string>AIzaSyChMEj8-_lR-lucSVPNzHN4LiE_lMsZIRQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>271856290590</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.experiance</string>
+	<key>PROJECT_ID</key>
+	<string>estateagency-5e471</string>
+	<key>STORAGE_BUCKET</key>
+	<string>estateagency-5e471.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:271856290590:ios:d91634ec665d0180a8570f</string>
+</dict>
+</plist>
