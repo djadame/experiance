@@ -58,10 +58,28 @@ class _LoginState extends State<login> {
     ),
     );
   }
-  siginWithGoogle() {
+  siginWithGoogle() async {
     setState(() {
       inLoginProcess = true;
       AuthService().signInWithGoogle();
       });
+    try {
+      //attempt to sign in with google
+      await AuthService().signInWithGoogle();
+     //connexion avec google
+      setState(() {
+        inLoginProcess = false;
+      });
+      Navigator.of(BuildContext as BuildContext).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const MyHomePage(),
+        ),
+      );
+    } catch (e) {
+      print(e);
+      setState(() {
+        inLoginProcess = false;
+      });
+    }
   }
 }

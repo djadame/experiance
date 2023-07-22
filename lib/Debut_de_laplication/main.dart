@@ -80,7 +80,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
       ),
       backgroundColor: Color.fromARGB(255, 235, 16, 19),
-      nextScreen: const login(), //MyHomePage(),
+       nextScreen:  const login(),//MyHomePage(), //const login(),
       splashIconSize: 800.0, // Corrected the splashIconSize
       duration: 4000,
       splashTransition: SplashTransition.sizeTransition,

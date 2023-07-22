@@ -7,13 +7,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../Debut_de_laplication/login.dart';
 
 
-class wrapper extends StatelessWidget {
-  const wrapper({ Key? key }) : super(key: key);
+class Wrapper extends StatelessWidget {
+  const Wrapper({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
    final user = Provider.of<User?>(context);
-   return user == null ? const login() : MyHomePage();
+   return user == null ? const login() : const MyHomePage();
 
   }
 }
