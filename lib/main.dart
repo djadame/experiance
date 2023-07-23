@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:experiance/Debut_de_laplication/login.dart';
+import 'package:experiance/Home/wrapper.dart';
 import 'package:experiance/Widget/MyHomePage.dart';
 import 'package:experiance/firebase/authentication.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: const Wrapper(),
     );
   }
 }
@@ -80,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
       ),
       backgroundColor: Color.fromARGB(255, 235, 16, 19),
-       nextScreen:  const login(),//MyHomePage(), //const login(),
+       nextScreen: const Login(),//MyHomePage(), //const login(),
       splashIconSize: 800.0, // Corrected the splashIconSize
       duration: 4000,
       splashTransition: SplashTransition.sizeTransition,

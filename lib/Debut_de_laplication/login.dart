@@ -1,15 +1,14 @@
-import 'package:experiance/Widget/MyHomePage.dart';
 import 'package:experiance/firebase/authentication.dart';
 import 'package:flutter/material.dart';
 
-class login extends StatefulWidget {
-  const login ({super.key});
+class Login extends StatefulWidget {
+  const Login ({super.key});
 
   @override
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<login> {
+class _LoginState extends State<Login> {
 
   bool inLoginProcess = false;
 
@@ -34,9 +33,7 @@ class _LoginState extends State<login> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                siginWithGoogle();
-              },
+              onPressed: () => siginWithGoogle(),
               style: ElevatedButton.styleFrom(
                 primary: Colors.orange,
                 padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -55,26 +52,22 @@ class _LoginState extends State<login> {
             ),
           ],
         ),
-    ),
+      ),
     );
   }
+
   siginWithGoogle() async {
     setState(() {
       inLoginProcess = true;
-      AuthService().signInWithGoogle();
-      });
+      //AuthService().signInWithGoogle();
+    });
     try {
       //attempt to sign in with google
       await AuthService().signInWithGoogle();
-     //connexion avec google
+      //connexion avec google
       setState(() {
         inLoginProcess = false;
       });
-      Navigator.of(BuildContext as BuildContext).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const MyHomePage(),
-        ),
-      );
     } catch (e) {
       print(e);
       setState(() {

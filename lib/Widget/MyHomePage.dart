@@ -3,6 +3,7 @@ import '../Home/Container_roule.dart';
 import '../firebase/authentication.dart';
 import 'Small_text.dart';
 import 'package:experiance/Widget/Big_text_dart.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -249,14 +250,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+
                         inLoginProcess
-                            ? Center(child: const CircularProgressIndicator())
+                            ? const Center(child: Expanded(child: CircularProgressIndicator()))
                             :
                             Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  siginWithGoogle();
-                                },
+                               child: ElevatedButton.icon(
+                                onPressed: () => siginWithGoogle(),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.orange,
                                   padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -264,7 +264,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                 ),
-                                child: const Text(
+                                icon: const FaIcon(FontAwesomeIcons.google, color: Colors.white),
+                                label: const Text(
                                   "connect with Google",
                                   style: TextStyle(
                                     fontSize: 15,
@@ -273,9 +274,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                 ),
                               ),
+
                             ),
 
                       ],
+
 
                     ),
                   )
@@ -289,25 +292,24 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
   siginWithGoogle() async {
-    setState(() {
+    setState(()  {
       inLoginProcess = true;
-      // AuthService().signInWithGoogle();
+      //AuthService().signInWithGoogle();
     });
-    try{
-      //attendre la fin de la connexion google
+    try {
+      //attempt to sign in with google
       await AuthService().signInWithGoogle();
-      //si la connexion est reussi
+      //connexion avec google
       setState(() {
         inLoginProcess = false;
       });
-    }catch(e){
-      //si la connexion echoue
-      print(e.toString());
-      print('connexion echoue : $e');
+    } catch (e) {
+      print(e);
       setState(() {
         inLoginProcess = false;
       });
     }
+
   }
 
   Widget buildTextField(
