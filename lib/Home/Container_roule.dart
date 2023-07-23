@@ -8,10 +8,10 @@ class Article extends StatefulWidget {
   const Article({Key? key}) : super(key: key);
 
   @override
-  _ArticleState createState() => _ArticleState();
+  ArticleState createState() => ArticleState();
 }
 
-class _ArticleState extends State<Article> {
+class ArticleState extends State<Article> {
   // Effect for achieving dynamic scrolling effect
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currPageValue = 0.0;

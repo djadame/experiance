@@ -1,14 +1,15 @@
 import 'package:experiance/firebase/authentication.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
   const Login ({super.key});
 
   @override
-  _LoginState createState() => _LoginState();
+  LoginState createState() => LoginState();
 }
 
-class _LoginState extends State<Login> {
+class LoginState extends State<Login> {
 
   bool inLoginProcess = false;
 
@@ -35,7 +36,7 @@ class _LoginState extends State<Login> {
             ElevatedButton(
               onPressed: () => siginWithGoogle(),
               style: ElevatedButton.styleFrom(
-                primary: Colors.orange,
+                backgroundColor: Colors.orange,
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -69,7 +70,9 @@ class _LoginState extends State<Login> {
         inLoginProcess = false;
       });
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       setState(() {
         inLoginProcess = false;
       });

@@ -1,8 +1,9 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:experiance/Debut_de_laplication/login.dart';
 import 'package:experiance/Home/wrapper.dart';
-import 'package:experiance/Widget/MyHomePage.dart';
+//import 'package:experiance/Widget/MyHomePage.dart';
 import 'package:experiance/firebase/authentication.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
@@ -18,8 +19,11 @@ void main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
   } catch (e) {
-    print(e);
-    print('Firebase initialization error');
+    if (kDebugMode) {
+      print(e);
+      print('Firebase initialization error');
+    }
+
   }
 
 
@@ -45,7 +49,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'SOKO',
       debugShowCheckedModeBanner: false, // Hide the debug banner
       theme: ThemeData(
         primarySwatch: Colors.blue,

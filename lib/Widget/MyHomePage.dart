@@ -1,4 +1,7 @@
+import 'package:experiance/Widget/HomeAppBar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../Home/Container_roule.dart';
 import '../firebase/authentication.dart';
 import 'Small_text.dart';
@@ -6,13 +9,17 @@ import 'package:experiance/Widget/Big_text_dart.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+
+  final User? user;
+  const MyHomePage({Key? key, this.user}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+
   bool isObscurePassword = true;
   bool inLoginProcess = false;
   int _currentIndex = 0;
@@ -126,13 +133,23 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   Widget buildAddIcons() {
-    return GridView.count(
-      crossAxisCount: 2,
+    final user = Provider.of<User?>(context);
+
+    return  Scaffold(
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            HomeAppBar(user: user),
+          ],
+        ),
+      ),
+
     );
   }
 
 
   Widget buildPersonIcons() {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(' Profile Utilisateur'),
@@ -291,6 +308,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+
   siginWithGoogle() async {
     setState(()  {
       inLoginProcess = true;
