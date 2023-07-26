@@ -1,7 +1,6 @@
 import 'package:experiance/firebase/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 class ProfileAppBar extends StatelessWidget {
   final User? user;
@@ -9,6 +8,7 @@ class ProfileAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return SliverAppBar(
       expandedHeight: MediaQuery.of(context).size.height * 0.40,
       pinned: true,

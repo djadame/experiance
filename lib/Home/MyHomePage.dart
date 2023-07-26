@@ -1,10 +1,11 @@
-import 'package:experiance/Widget/HomeAppBar.dart';
+import 'package:experiance/Home/HomeAppBar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../Home/Container_roule.dart';
+import 'AddSection.dart';
+import 'Container_roule.dart';
 import '../firebase/authentication.dart';
-import 'Small_text.dart';
+import '../Widget/Small_text.dart';
 import 'package:experiance/Widget/Big_text_dart.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -101,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Column(
                   children: [
-                    BigText(text: "SOKO", color: Colors.orange),
+                    Big_Text(text: "SOKO", color: Colors.orange),
                     Row(children: [
                       SmallText(text: "TOGO", color: Colors.black54),
                       //Icon(Icons.arrow_drop_down_rounded),
@@ -140,6 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: CustomScrollView(
           slivers: [
             HomeAppBar(user: user),
+            AddSection(user: user)
           ],
         ),
       ),
@@ -345,12 +347,12 @@ class _MyHomePageState extends State<MyHomePage> {
         decoration: InputDecoration(
           suffixIcon: isObscurePassword
               ? IconButton(
-            icon: const Icon(Icons.remove_red_eye, color: Colors.grey),
-            onPressed: () {
-              setState(() {
-                isObscurePassword = !isObscurePassword;
-              });
-            },
+                icon: const Icon(Icons.remove_red_eye, color: Colors.grey),
+                onPressed: () {
+                  setState(() {
+                    isObscurePassword = !isObscurePassword;
+                  });
+                },
           )
               : null,
           contentPadding: const EdgeInsets.only(bottom: 5),

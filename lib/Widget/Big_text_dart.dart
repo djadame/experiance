@@ -1,24 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
-class BigText extends StatelessWidget {
+class Big_Text extends StatefulWidget {
   final Color color;
   final String text;
   double size;
   TextOverflow overflow;
-  BigText({Key? key,  this.color = const Color(0xFF332d2b),
+  Big_Text({Key? key,  this.color = const Color(0xFF332d2b),
     required this.text,
     this.size=20,
     this.overflow=TextOverflow.ellipsis}): super(key :key);
 
   @override
+  State<Big_Text> createState() => _BigTextState();
+}
+
+class _BigTextState extends State<Big_Text> {
+  @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      widget.text,
       maxLines: 1,
-      overflow: overflow,
+      overflow: widget.overflow,
       style: GoogleFonts.roboto(
-        color:color,
-        fontSize: size,
+        color:widget.color,
+        fontSize: widget.size,
         fontWeight: FontWeight.w400,
       ),
 

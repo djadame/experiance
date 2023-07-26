@@ -46,6 +46,9 @@ class LoginState extends State<Login> {
               const SizedBox(
                 height: 20,
               ),
+              inLoginProcess
+                  ? const Center(child: Expanded(child: CircularProgressIndicator()))
+              :
               ElevatedButton(
                 onPressed: () => siginWithGoogle(),
                 style: ElevatedButton.styleFrom(
