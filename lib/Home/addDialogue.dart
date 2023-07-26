@@ -19,10 +19,10 @@ class AddDialogue{
     String description = '';
     double? prix = 0;
     String Lieu = '';
-    String name_formError = 'entre le nom!';
-    String Des_formError = 'entre la description!';
-    String P_formError = 'Entre le prix!';
-    String L_formError = 'Entre le lieux';
+    String nameFormerror = 'entre le nom!';
+    String desFormerror = 'entre la description!';
+    String pFormerror = 'Entre le prix!';
+    String lFormerror = 'Entre le lieux';
     // ignore: use_build_context_synchronously
     showDialog(
         context: context,
@@ -58,7 +58,7 @@ class AddDialogue{
                       child: TextFormField(
                         maxLength: 20,
                         onChanged: (value) => artName = value,
-                        validator: (value) => artName == '' ? name_formError : null,
+                        validator: (value) => artName == '' ? nameFormerror : null,
                         decoration: const InputDecoration(
                           labelText: 'nom de l\'article',
                           border: OutlineInputBorder(),
@@ -71,7 +71,7 @@ class AddDialogue{
                       child: TextFormField(
                         //maxLength: 200,
                         onChanged: (value) => description = value,
-                        validator: (value) => description == '' ?  Des_formError : null,
+                        validator: (value) => description == '' ?  desFormerror : null,
                         decoration: const InputDecoration(
                           labelText: 'Description',
                           border: OutlineInputBorder(),
@@ -84,7 +84,7 @@ class AddDialogue{
                       child: TextFormField(
                         //maxLength: 200,
                         onChanged: (value) => prix = double.tryParse(value) ?? 0,
-                        validator: (value) => value != null ?  P_formError : null,
+                        validator: (value) => value != null ?  pFormerror : null,
                         decoration: const InputDecoration(
                           labelText: 'Prix',
                           border: OutlineInputBorder(),
@@ -98,7 +98,7 @@ class AddDialogue{
                       child: TextFormField(
                         maxLength: 50,
                         onChanged: (value) => Lieu = value,
-                        validator: (value) => value != null ?  L_formError : null,
+                        validator: (value) => value != null ?  lFormerror : null,
                         decoration: const InputDecoration(
                           labelText: 'Lieu',
                           border: OutlineInputBorder(),
