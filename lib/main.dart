@@ -1,7 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:experiance/Debut_de_laplication/login.dart';
 import 'package:experiance/Home/wrapper.dart';
-//import 'package:experiance/Widget/MyHomePage.dart';
 import 'package:experiance/firebase/authentication.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +8,7 @@ import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+import 'Home/profile/Profile.dart';
 import 'firebase/firebase_options.dart';
 
 
@@ -52,9 +52,14 @@ class MyApp extends StatelessWidget {
       title: 'SOKO',
       debugShowCheckedModeBanner: false, // Hide the debug banner
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
-      home: const Wrapper(),
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => const Wrapper(),
+        '/profile' : (context) => const Profile(),
+      },
+      //home: const Wrapper(),
     );
   }
 }

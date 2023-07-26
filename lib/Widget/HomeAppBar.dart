@@ -9,17 +9,20 @@ class HomeAppBar extends StatelessWidget  {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: const Text('Home'),
+      title: const Text('Home',),
       elevation: 0.8,
       floating: true,
       forceElevated: true,
       actions: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            radius: 20,
-            backgroundColor: Colors.white,
-            backgroundImage: NetworkImage(user!.photoURL!),
+          child: GestureDetector(
+            onTap: ()=> Navigator.pushNamed(context, '/profile') ,
+            child: CircleAvatar(
+              radius: 20,
+              backgroundColor: Colors.white,
+              backgroundImage: NetworkImage(user!.photoURL!),
+            ),
           ),
         ),
 
