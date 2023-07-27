@@ -86,10 +86,10 @@ class _SplashScreenState extends State<SplashScreen> {
               color: Colors.white,
             ),
           ),
-          Text('votre agence immobilière plus près de vous'),
+          const Text('votre agence immobilière plus près de vous'),
         ],
       ),
-      backgroundColor: Color.fromARGB(255, 235, 16, 19),
+      backgroundColor: const Color.fromARGB(255, 235, 16, 19),
        nextScreen: const Login(),//MyHomePage(), //const login(),
       splashIconSize: 800.0, // Corrected the splashIconSize
       duration: 4000,
