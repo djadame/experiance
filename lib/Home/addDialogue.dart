@@ -26,7 +26,7 @@ class AddDialogue {
     String desFormerror = 'entre la description!';
     String pFormerror = 'Entre le prix!';
     String lFormerror = 'Entre le lieux';
-    // ignore: use_build_context_synchronously
+    if (!context.mounted) return;
     showDialog(
         context: context,
         builder: (BuildContext context) {
