@@ -1,4 +1,5 @@
 import 'package:experiance/Home/HomeAppBar.dart';
+import 'package:experiance/shared-ui/ArticleList.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -141,7 +142,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: CustomScrollView(
           slivers: [
             HomeAppBar(user: user),
-            AddSection(user: user)
+            AddSection(user: user),
+            ArticleList(user: user!.uid),
           ],
         ),
       ),

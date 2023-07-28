@@ -31,4 +31,50 @@ class DbService {
       "artUrlImg": art.artUrlImg
     });
   }
-}
+
+  //recupe des donne dans la db
+  Stream<List<Art>> getArt() {
+    Query queryArt = _art.orderBy('artTimestamp', descending: true);
+    return queryArt.snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return Art(
+            artID: doc.id,
+            artName: doc.get('artName'),
+            artDescription:  doc.get('artDescription'),
+            artPrice:  doc.get('artPrice'),
+            artLieu:  doc.get('artLieu'),
+            artUserID:  doc.get('artUserID'),
+            artUserName:  doc.get('artUserName'),
+            artTimestamp:  doc.get('artTimestamp'),
+            artFavoriteCount:  doc.get('artFavoriteCount'),
+            isMyFavoriteArt:  doc.get('isMyFavoriteArt'),
+            artUrlImg:  doc.get('artUrlImg'));
+      }).toList();
+    });
+    }
+
+
+    //autre funtion de recupe sur le net, perso pour la db
+  void getArt2(){
+    var db = FirebaseFirestore.instance;
+    final docRef = db.collection('art').doc();
+    docRef.get().then(
+            (doc) {
+              final data = doc.data() as Map<String, dynamic>;
+              return Art(
+                  artID: doc.id,
+                  artName: data['artName'],
+                  artDescription:  data['artDescription'],
+                  artPrice:  data['artPrice'],
+                  artLieu:  data['artLieu'],
+                  artUserID:  data['artUserID'],
+                  artUserName:  data['artUserName'],
+                  artTimestamp:  data['artTimestamp'],
+                  artFavoriteCount:  data['artFavoriteCount'],
+                  isMyFavoriteArt:  data['isMyFavoriteArt'],
+                  artUrlImg:  data['artUrlImg']);
+    },
+    onError: (err) => print(err));
+  }
+  }
+
