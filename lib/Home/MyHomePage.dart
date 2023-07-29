@@ -1,13 +1,13 @@
-import 'package:experiance/Home/HomeAppBar.dart';
-import 'package:experiance/shared-ui/ArticleList.dart';
+import 'package:experiance/Widget/Appbar/HomeAppBar.dart';
+import 'package:experiance/shared-ui/List/userList/ArticleList.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'AddSection.dart';
+import '../Widget/Art/AddArt/AddSection.dart';
 import 'Container_roule.dart';
 import '../firebase/authentication.dart';
-import '../Widget/Small_text.dart';
-import 'package:experiance/Widget/Big_text_dart.dart';
+import '../Widget/Text/Small_text.dart';
+import 'package:experiance/Widget/Text/Big_text_dart.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyHomePage extends StatefulWidget {

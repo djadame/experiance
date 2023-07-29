@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'Home/profile/Profile.dart';
+import 'Widget/Art/Art_detail/Detail.dart';
 import 'firebase/dbservices.dart';
 import 'firebase/firebase_options.dart';
 
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/' : (context) => const Wrapper(),
         '/profile' : (context) => const Profile(),
+        '/detail' : (context) => const Detail(),
       },
       //home: const Wrapper(),
     );

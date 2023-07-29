@@ -1,13 +1,12 @@
-import 'package:experiance/shared-ui/Articlefeed.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../model/Art.dart';
+import '../../../model/Art.dart';
+import 'ArtFeed.dart';
 
-
-class ArticleList extends StatelessWidget {
+class ArtList extends StatelessWidget {
   final String user;
-  const ArticleList({super.key, required this.user});
+  const ArtList({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +19,8 @@ class ArticleList extends StatelessWidget {
             userID: user,
           );
         },
-      childCount: _art.length,
-      )
+        childCount: _art.length,
+      ),
     );
   }
 }
