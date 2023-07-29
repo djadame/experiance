@@ -17,11 +17,11 @@ class AddSection extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
+                const Column(
                   children: [
-                    const Text('Salut'),
-                    Text(user!.displayName!,
-                    style: const TextStyle(
+                    Text(''),
+                    Text(''/*user!.displayName!*/,
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                     )

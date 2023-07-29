@@ -8,7 +8,7 @@ class HomeAppBar extends StatelessWidget  {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: const Text('Home',),
+      title: const Text('',),
       elevation: 0.8,
       floating: true,
       forceElevated: true,

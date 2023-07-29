@@ -1,8 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:experiance/Widget/Big_text_dart.dart';
 import 'package:experiance/Widget/Small_text.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:experiance/Widget/Dimention.dart';
+
+import '../model/Art.dart';
+import '../shared-ui/ArticleList.dart';
+import '../shared-ui/Articlefeed.dart';
+
 
 class Article extends StatefulWidget {
   const Article({Key? key}) : super(key: key);
@@ -12,6 +19,9 @@ class Article extends StatefulWidget {
 }
 
 class ArticleState extends State<Article> {
+
+  //final User? user = FirebaseAuth.instance.currentUser;
+  String? user;
   // Effect for achieving dynamic scrolling effect
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currPageValue = 0.0;
@@ -38,6 +48,7 @@ class ArticleState extends State<Article> {
 
   @override
   Widget build(BuildContext context) {
+    final art = Provider.of<List<Art>>(context);
     return Column(
       children: [
         SizedBox(
@@ -84,8 +95,7 @@ class ArticleState extends State<Article> {
                   text: "Category",
                 ),
               ),
-              // List of articles
-            ],
+              ],
           ),
         ),
       ],

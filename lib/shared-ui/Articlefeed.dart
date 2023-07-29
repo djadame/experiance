@@ -14,8 +14,8 @@ class ArtFeed extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: MediaQuery.of(context).size.height * 0.2,
-          width: MediaQuery.of(context).size.width * 0.4,
+          height: MediaQuery.of(context).size.height * 0.4,
+          //width: MediaQuery.of(context).size.width * 0.9,
           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(8.0)),
@@ -25,70 +25,93 @@ class ArtFeed extends StatelessWidget {
             ),
           ),
         ),
-        Row(
-          children: [
-            Column(
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
+
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  art!.artPrice.toString(),
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  art!.artName!,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  art!.artDescription!,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Divider(
-                  color: Colors.black,
-                  height: 16,
-                  thickness: 2,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                Text(
-                  'Lieu: ${art!.artLieu!}',
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  'De: ${art!.artUserName!.toUpperCase()}',
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.attach_money), // Icône d'argent
+                        Text(
+                          ' :${art!.artPrice.toString()}',
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      art!.artName!,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      art!.artDescription!,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                   const Divider(
+                      color: Colors.black,
+                      height: 2,
+
+                      thickness: 5,
+                      indent: 20,
+
+                    ),
+                    Row(
+                      children: [
+                        const Icon(Icons.access_time), // Icône d'heure
+                        const SizedBox(width: 2), // Espacement entre l'icône et le texte
+                        Text(
+                          ' ${formatTimestamp(art!.artTimestamp!)}',
+                          // Autres propriétés de style de texte que vous pouvez ajouter
+                        ),
+                      ],
+                    )
+                  ],
+
                 ),
 
-                Row(
+
+                Column(
                   children: [
-                    const Icon(Icons.access_time), // Icône d'heure
-                    const SizedBox(width: 8), // Espacement entre l'icône et le texte
-                    Text(
-                      '${formatTimestamp(art!.artTimestamp!)}',
-                      //'Date: ${art!.artTimestamp!.toDate().toString().substring(0, 10)}',
+                    Row(
+                      children: [
+                        const Icon(Icons.location_on), // Icône d'heure
+                        Text(
+                          art!.artLieu!,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Icon(Icons.person), // Icône d'heure
+                        Text(
+                           ' :${art!.artUserName!.toUpperCase()}',
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ]
-            ),
-
-
-
-            const Spacer(),
-          ],
+          ),
         )
       ],
     );
