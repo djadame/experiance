@@ -43,8 +43,8 @@ class _FavoritState extends State<Favorit> {
               onTap: () => DbService().addFavArt(widget.art!, widget.userID!),
               child: Row(
               children: [
-                widget.art!.artFavoriteCount! > 0 ?
-                Text(
+                widget.art!.artFavoriteCount! > 0
+                    ? Text(
                   widget.art!.artFavoriteCount.toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,

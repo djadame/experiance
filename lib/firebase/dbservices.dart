@@ -87,7 +87,7 @@ class DbService {
     final artDocRef = _art.doc(art.artID);
     final favoritedBy = artDocRef.collection('favoritedBy');
     int artFavoriteCount = art.artFavoriteCount!;
-    int increaseCount = artFavoriteCount++;
+    int increaseCount = artFavoriteCount+=1;
     favoritedBy.doc(userID).set({
       "artName": art.artName,
       "artDescription": art.artDescription,
@@ -97,7 +97,6 @@ class DbService {
       "artUserName": art.artUserName,
       "artTimestamp": FieldValue.serverTimestamp(),
       "artFavoriteCount": increaseCount,
-      "isMyFavoriteArt": true,
     });
     artDocRef.update({"artFavoriteCount": increaseCount});
   }
@@ -108,9 +107,9 @@ class DbService {
     final artDocRef = _art.doc(art.artID);
     final favoritedBy = artDocRef.collection('favoritedBy');
     int artFavoriteCount = art.artFavoriteCount!;
-    int decreaseCount = artFavoriteCount--;
-    favoritedBy.doc(userID).delete();
+    int decreaseCount = artFavoriteCount -= 1;
     artDocRef.update({"artFavoriteCount": decreaseCount});
+    favoritedBy.doc(userID).delete();
   }
 
   //recupe des article favorit dans une sous collection de la BD de l'utlicateur en temps reel

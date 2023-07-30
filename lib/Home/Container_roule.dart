@@ -89,7 +89,7 @@ class ArticleState extends State<Article> {
                   ],
               ),
               const SizedBox(height: 30),
-            ArtList(user: user!.uid)
+            //ArtList(user: user!.uid)
             ],
           ),
         ),
