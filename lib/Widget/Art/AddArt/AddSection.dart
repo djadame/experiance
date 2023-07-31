@@ -19,7 +19,7 @@ class AddSection extends StatelessWidget {
               children: [
                  Column(
                   children: [
-                    const Text(''),
+                    const Text('Salut'),
                     Text(user!.displayName!,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,

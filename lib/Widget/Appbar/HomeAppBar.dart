@@ -8,7 +8,7 @@ class HomeAppBar extends StatelessWidget  {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: const Text('',),
+      title: const Text('Add Section',),
       elevation: 0.8,
       floating: true,
       forceElevated: true,

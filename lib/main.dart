@@ -1,11 +1,11 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:experiance/Debut_de_laplication/login.dart';
+//import 'package:animated_splash_screen/animated_splash_screen.dart';
+//import 'package:experiance/Debut_de_laplication/login.dart';
 import 'package:experiance/Home/wrapper.dart';
 import 'package:experiance/firebase/authentication.dart';
 import 'package:experiance/model/Art.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+//import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +40,7 @@ void main() async {
         ),
         StreamProvider<List<Art>>.value(
             initialData: const [],
-            value: DbService().getArt()
+            value: DbService().getArtByuserID(),
         )
       ],
       child: const MyApp(),
@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class SplashScreen extends StatefulWidget {
+/*class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -106,4 +106,4 @@ class _SplashScreenState extends State<SplashScreen> {
       animationDuration: const Duration(),
     );
   }
-}
+}*/

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import '../model/Art.dart';
@@ -7,6 +8,7 @@ class DbService {
   //declaration et initialisation
   final CollectionReference _art = FirebaseFirestore.instance.collection('art');
   FirebaseStorage storage = FirebaseStorage.instance;
+  final user = FirebaseAuth.instance.currentUser;
 
   String? userID, artID;
   DbService({this.userID, this.artID});
@@ -56,79 +58,92 @@ class DbService {
     });
   }
 
-
-  //autre funtion de recupe sur le net, perso pour la db
-  void getArt2() {
-    var db = FirebaseFirestore.instance;
-    final docRef = db.collection('art').doc();
-    docRef.get().then(
-            (doc) {
-          final data = doc.data() as Map<String, dynamic>;
-          return Art(
-              artID: doc.id,
-              artName: data['artName'],
-              artDescription: data['artDescription'],
-              artPrice: data['artPrice'],
-              artLieu: data['artLieu'],
-              artUserID: data['artUserID'],
-              artUserName: data['artUserName'],
-              artTimestamp: data['artTimestamp'],
-              artFavoriteCount: data['artFavoriteCount'],
-              isMyFavoriteArt: data['isMyFavoriteArt'],
-              artUrlImg: data['artUrlImg']);
-        },
-        onError: (err) => print(err));
+  Stream<List<Art>> getArtByuserID() {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    Query queryArt = _art.where('artUserID', isEqualTo: uid ).orderBy('artTimestamp', descending: true);
+    return queryArt.snapshots().map((snapshot) {
+      return snapshot.docs.map((snapshot) {
+        return Art(
+            artID: snapshot.id,
+            artName: snapshot.get('artName'),
+            artDescription: snapshot.get('artDescription'),
+            artPrice: snapshot.get('artPrice'),
+            artLieu: snapshot.get('artLieu'),
+            artUserID: snapshot.get('artUserID'),
+            artUserName: snapshot.get('artUserName'),
+            artTimestamp: snapshot.get('artTimestamp'),
+            artFavoriteCount: snapshot.get('artFavoriteCount'),
+            isMyFavoriteArt: snapshot.get('isMyFavoriteArt'),
+            artUrlImg: snapshot.get('artUrlImg'));
+      }).toList();
+    });
   }
-
 
   //ajout de l'article' favorit dans une sous collection de la BD
 
   void addFavArt(Art art, String userID) {
     final artDocRef = _art.doc(art.artID);
     final favoritedBy = artDocRef.collection('favoritedBy');
-    int artFavoriteCount = art.artFavoriteCount!;
-    int increaseCount = artFavoriteCount+=1;
-    favoritedBy.doc(userID).set({
-      "artName": art.artName,
-      "artDescription": art.artDescription,
-      "artPrice": art.artPrice,
-      "artLieu": art.artLieu,
-      "artUserID": art.artUserID,
-      "artUserName": art.artUserName,
-      "artTimestamp": FieldValue.serverTimestamp(),
-      "artFavoriteCount": increaseCount,
+    favoritedBy.doc(userID).get().then((doc) {
+      if (!doc.exists) {
+        int artFavoriteCount = art.artFavoriteCount!;
+        int increaseCount = artFavoriteCount;
+
+        favoritedBy.doc(userID).set({
+          "artName": art.artName,
+          "artDescription": art.artDescription,
+          "artPrice": art.artPrice,
+          "artLieu": art.artLieu,
+          "artUserID": art.artUserID,
+          "artUserName": art.artUserName,
+          "artTimestamp": FieldValue.serverTimestamp(),
+          "artFavoriteCount": increaseCount,
+          "isMyFavoriteArt": true,
+          "artUrlImg": art.artUrlImg
+
+        });
+        artDocRef.update({"artFavoriteCount": increaseCount});
+      }
     });
-    artDocRef.update({"artFavoriteCount": increaseCount});
+
+
+
   }
 
 
   //suppression de l'article' favorit dans une sous collection de la BD
   void removeFavArt(Art art, String userID) {
+
     final artDocRef = _art.doc(art.artID);
     final favoritedBy = artDocRef.collection('favoritedBy');
-    int artFavoriteCount = art.artFavoriteCount!;
-    int decreaseCount = artFavoriteCount -= 1;
-    artDocRef.update({"artFavoriteCount": decreaseCount});
-    favoritedBy.doc(userID).delete();
+    favoritedBy.doc(userID).get().then((doc) {
+      if (doc.exists) {
+        int artFavoriteCount = art.artFavoriteCount!;
+        int decreaseCount = artFavoriteCount -= 1;
+        favoritedBy.doc(userID).delete();
+        artDocRef.update({"artFavoriteCount": decreaseCount});
+      }
+    });
+
   }
 
   //recupe des article favorit dans une sous collection de la BD de l'utlicateur en temps reel
 
   Stream<Art> get myFavoriteArt{
     final favoritedBy = _art.doc(artID).collection('favoritedBy');
-    return favoritedBy.doc(userID).snapshots().map((doc) {
+    return favoritedBy.doc(userID).snapshots().map((snapshot) {
       return Art(
-          artID: doc.id,
-          artName: doc.get('artName'),
-          artDescription: doc.get('artDescription'),
-          artPrice: doc.get('artPrice'),
-          artLieu: doc.get('artLieu'),
-          artUserID: doc.get('artUserID'),
-          artUserName: doc.get('artUserName'),
-          artTimestamp: doc.get('artTimestamp'),
-          artFavoriteCount: doc.get('artFavoriteCount'),
-          isMyFavoriteArt: doc.get('isMyFavoriteArt'),
-          artUrlImg: doc.get('artUrlImg'),
+          artID: snapshot.id,
+          artName: snapshot.get('artName'),
+          artDescription: snapshot.get('artDescription'),
+          artPrice: snapshot.get('artPrice'),
+          artLieu: snapshot.get('artLieu'),
+          artUserID: snapshot.get('artUserID'),
+          artUserName: snapshot.get('artUserName'),
+          artTimestamp: snapshot.get('artTimestamp'),
+          artFavoriteCount: snapshot.get('artFavoriteCount'),
+          isMyFavoriteArt: snapshot.get('isMyFavoriteArt'),
+          artUrlImg: snapshot.get('artUrlImg'),
       );
     });
   }

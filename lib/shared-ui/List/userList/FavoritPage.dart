@@ -19,13 +19,44 @@ class _FavoritState extends State<Favorit> {
       right: 12.0,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 4.0),
+
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.7),
-          borderRadius: BorderRadius.circular(8.0)
+          borderRadius: BorderRadius.circular(8.0),
+
         ),
-        child: widget.art!.isMyFavoriteArt!
+
+        child: //Text(widget.art!.isMyFavoriteArt!.toString())
+        widget.art!.isMyFavoriteArt!
             ? GestureDetector(
-              onTap: () => DbService().removeFavArt(widget.art!, widget.userID!),
+              onTap: () {
+                setState(() {
+                  //widget.art!.isMyFavoriteArt = true;
+                  DbService().removeFavArt(widget.art!, widget.userID!);
+                });
+              },
+              child: Row(
+                children: [
+                  widget.art!.artFavoriteCount! > 0
+                      ? Text(
+                    widget.art!.artFavoriteCount.toString(),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
+                  )
+                      : Container(),
+                  const Icon(Icons.favorite, color: Colors.red),
+                ],
+              ),
+            )
+        /*GestureDetector(
+                onTap: () {
+                  setState(() {
+                    //widget.art!.isMyFavoriteArt = false;
+                    DbService().removeFavArt(widget.art!, widget.userID!);
+                  });
+                },
               child: Row(
               children: [
                 Text(
@@ -35,12 +66,31 @@ class _FavoritState extends State<Favorit> {
                     color: Colors.red,
                   ),
                 ),
-                const Icon(Icons.favorite, color: Colors.red),
+                const Icon(Icons.favorite_border, color: Colors.black),
+              ],
+        ),
+            )*/
+            : GestureDetector(
+                onTap: () {
+                  setState(() {
+                    //widget.art!.isMyFavoriteArt = false;
+                    DbService().addFavArt(widget.art!, widget.userID!);
+                  });
+                },
+              child: const Row(
+              children: [
+
+                Icon(Icons.favorite_border, color: Colors.black),
               ],
         ),
             )
-            : GestureDetector(
-              onTap: () => DbService().addFavArt(widget.art!, widget.userID!),
+        /*GestureDetector(
+                onTap: () {
+                  setState(() {
+                   //widget.art!.isMyFavoriteArt = true;
+                    DbService().addFavArt(widget.art!, widget.userID!);
+                  });
+                },
               child: Row(
               children: [
                 widget.art!.artFavoriteCount! > 0
@@ -52,10 +102,10 @@ class _FavoritState extends State<Favorit> {
                   ),
                 )
                 : Container(),
-                const Icon(Icons.favorite_border, color: Colors.red),
+                const Icon(Icons.favorite, color: Colors.red),
               ],
         ),
-            ),
+            )*/,
       ),
     );
   }
