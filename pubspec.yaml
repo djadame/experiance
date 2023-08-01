@@ -74,6 +74,7 @@ dependencies:
   font_awesome_flutter: ^10.5.0
     #dependance pour le format de date
   intl: ^0.18.1
+  beamer: ^1.5.6
   
 
 

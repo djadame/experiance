@@ -13,7 +13,6 @@ class ArtFeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[200],
       child: Column(
         children: [
           Stack(
@@ -39,85 +38,81 @@ class ArtFeed extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            const Icon(Icons.attach_money), // Icône d'argent
-                            Text(
-                              ' :${art!.artPrice.toString()}',
-                              style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(Icons.attach_money), // Icône d'argent
+                          Text(
+                            ' :${art!.artPrice.toString()}',
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
                             ),
-                          ],
-                        ),
-                        Text(
-                          art!.artName!,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
                           ),
+                        ],
+                      ),
+                      Text(
+                        art!.artName!,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
                         ),
-                        Text(
-                          art!.artDescription!,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
+                      ),
+                      Text(
+                        art!.artDescription!,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Divider(
+                        color: Colors.black,
+                        height: 2,
+                        thickness: 5,
+                        indent: 20,
+                      ),
+                      Row(
+                        children: [
+                          const Icon(Icons.access_time), // Icône d'heure
+                          const SizedBox(width: 2), // Espacement entre l'icône et le texte
+                          Text(
+                            ' ${formatTimestamp(art!.artTimestamp!)}',
+                            // Autres propriétés de style de texte que vous pouvez ajouter
                           ),
-                        ),
-                        const Divider(
-                          color: Colors.black,
-                          height: 2,
-                          thickness: 5,
-                          indent: 20,
-                        ),
-                        Row(
-                          children: [
-                            const Icon(Icons.access_time), // Icône d'heure
-                            const SizedBox(width: 2), // Espacement entre l'icône et le texte
-                            Text(
-                              ' ${formatTimestamp(art!.artTimestamp!)}',
-                              // Autres propriétés de style de texte que vous pouvez ajouter
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Row(
-                          children: [
-                            const Icon(Icons.location_on), // Icône d'heure
-                            Text(
-                              art!.artLieu!,
-                              style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(Icons.location_on), // Icône d'heure
+                          Text(
+                            art!.artLieu!,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
                             ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            const Icon(Icons.person), // Icône d'heure
-                            Text(
-                              ' :${art!.artUserName!.toUpperCase()}',
-                              style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Icon(Icons.person), // Icône d'heure
+                          Text(
+                            ' :${art!.artUserName!.toUpperCase()}',
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -13,7 +13,7 @@ class ArticleFeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blueGrey,
+      color: Colors.white70,
       child: Column(
         children: [
           Stack(

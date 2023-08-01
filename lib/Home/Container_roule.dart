@@ -1,12 +1,15 @@
 
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:experiance/Widget/Text/Big_text_dart.dart';
+import 'package:provider/provider.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:experiance/Widget/Size/Dimention.dart';
 
 import '../Widget/Text/Small_text.dart';
+import '../shared-ui/List/popularlist/ArtList.dart';
 
 
 
@@ -48,6 +51,7 @@ class ArticleState extends State<Article> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User?>(context);
 
     return Column(
       children: [

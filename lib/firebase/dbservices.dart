@@ -43,6 +43,27 @@ class DbService {
     return queryArt.snapshots().map((snapshot) {
       return snapshot.docs.map((doc) {
         return Art(
+          artID: doc.id,
+          artName: doc.get('artName'),
+          artDescription: doc.get('artDescription'),
+          artPrice: doc.get('artPrice'),
+          artLieu: doc.get('artLieu'),
+          artUserID: doc.get('artUserID'),
+          artUserName: doc.get('artUserName'),
+          artTimestamp: doc.get('artTimestamp'),
+          artFavoriteCount: doc.get('artFavoriteCount'),
+          isMyFavoriteArt: doc.get('isMyFavoriteArt'),
+          artUrlImg: doc.get('artUrlImg'),
+        );
+      }).toList(); // Convertir l'Iterable en List<Art>
+    });
+  }
+
+  /*Stream<List<Art>> getArt() {
+    Query queryArt = _art.orderBy('artTimestamp', descending: true);
+    return queryArt.snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return Art(
             artID: doc.id,
             artName: doc.get('artName'),
             artDescription: doc.get('artDescription'),
@@ -56,27 +77,34 @@ class DbService {
             artUrlImg: doc.get('artUrlImg'));
       }).toList();
     });
-  }
+  }*/
 
   Stream<List<Art>> getArtByuserID() {
-    final uid = FirebaseAuth.instance.currentUser!.uid;
-    Query queryArt = _art.where('artUserID', isEqualTo: uid ).orderBy('artTimestamp', descending: true);
-    return queryArt.snapshots().map((snapshot) {
-      return snapshot.docs.map((snapshot) {
-        return Art(
-            artID: snapshot.id,
-            artName: snapshot.get('artName'),
-            artDescription: snapshot.get('artDescription'),
-            artPrice: snapshot.get('artPrice'),
-            artLieu: snapshot.get('artLieu'),
-            artUserID: snapshot.get('artUserID'),
-            artUserName: snapshot.get('artUserName'),
-            artTimestamp: snapshot.get('artTimestamp'),
-            artFavoriteCount: snapshot.get('artFavoriteCount'),
-            isMyFavoriteArt: snapshot.get('isMyFavoriteArt'),
-            artUrlImg: snapshot.get('artUrlImg'));
-      }).toList();
-    });
+    final currentuser = FirebaseAuth.instance.currentUser;
+    if (currentuser != null) {
+      final uid = currentuser.uid;
+      Query queryArt = _art
+          .where('artUserID', isEqualTo: uid)
+          .orderBy('artTimestamp', descending: true);
+      return queryArt.snapshots().map((snapshot) {
+        return snapshot.docs.map((snapshot) {
+          return Art(
+              artID: snapshot.id,
+              artName: snapshot.get('artName'),
+              artDescription: snapshot.get('artDescription'),
+              artPrice: snapshot.get('artPrice'),
+              artLieu: snapshot.get('artLieu'),
+              artUserID: snapshot.get('artUserID'),
+              artUserName: snapshot.get('artUserName'),
+              artTimestamp: snapshot.get('artTimestamp'),
+              artFavoriteCount: snapshot.get('artFavoriteCount'),
+              isMyFavoriteArt: snapshot.get('isMyFavoriteArt'),
+              artUrlImg: snapshot.get('artUrlImg'));
+        }).toList();
+      });
+    }else{
+      return Stream.value([]);
+    }
   }
 
   //ajout de l'article' favorit dans une sous collection de la BD
@@ -146,5 +174,24 @@ class DbService {
           artUrlImg: snapshot.get('artUrlImg'),
       );
     });
+  }
+
+  // suppression de la voiture
+  Future<void> deleteCar(String carID) => _art.doc(carID).delete();
+
+  Future<Art> singleCar(String carID) async {
+    final doc = await _art.doc(carID).get();
+    return Art(
+        artID: doc.id,
+        artName: doc.get('artName'),
+        artDescription: doc.get('artDescription'),
+        artPrice: doc.get('artPrice'),
+        artLieu: doc.get('artLieu'),
+        artUserID: doc.get('artUserID'),
+        artUserName: doc.get('artUserName'),
+        artTimestamp: doc.get('artTimestamp'),
+        artFavoriteCount: doc.get('artFavoriteCount'),
+        isMyFavoriteArt: doc.get('isMyFavoriteArt'),
+        artUrlImg: doc.get('artUrlImg'));
   }
 }
