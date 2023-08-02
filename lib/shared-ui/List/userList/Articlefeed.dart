@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../model/Art.dart';
+import '../../makecall.dart';
 
 class ArticleFeed extends StatelessWidget {
   final Art? art;
@@ -30,7 +31,8 @@ class ArticleFeed extends StatelessWidget {
                 ),
               ),
             ),
-            Favorit(art: art, userID: userID,)
+            Favorit(art: art, userID: userID,),
+              CallerPhone(art: art, userID: userID,)
             ]
           ),
           Padding(
