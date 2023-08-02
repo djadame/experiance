@@ -37,7 +37,7 @@ class LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               const Text(
-                "Bienvenue",
+                "SOKO",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 40,
