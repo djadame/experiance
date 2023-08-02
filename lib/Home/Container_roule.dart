@@ -93,13 +93,351 @@ class ArticleState extends State<Article> {
                   const SizedBox(height: 30),
                   ],
               ),
-              const SizedBox(height: 30),
+             //const SizedBox(height: 30)
+
+              //premier photo
+              Container(
+                height: Dimension.pageViewContainer,
+                margin: const EdgeInsets.only(left: 11, right: 12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  //color: index.isEven ? const Color(0xFF69c5df) : const Color(0xFF9294cc),
+                  image: const DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/image/R.jpeg"),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: Dimension.pageViewTextContainer,
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(31),
+                    color: Colors.white,
+                    // Create the shadow on the white container of the photo
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0xFFe8e8e8),
+                        blurRadius: 10.0,
+                        offset: Offset(0, 5),
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-5, 0),
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-5, 0),
+                      ),
+                    ],
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 3, left: 15, right: 3),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Big_Text(text: "ODI RS8"),
+                        const SizedBox(height: 1),
+                        Row(
+                          children: [
+                            // Wrap(
+                            //   children: List.generate(
+                            //     5,
+                            //         (index) {
+                            //       return const Icon(
+                            //         Icons.star,
+                            //         color: Colors.green,
+                            //         // color: AppColors.mainColor,
+                            //         size: 15,
+                            //       );
+                            //     },
+                            //   ),
+                            // ),
+                            const SizedBox(width: 10),
+                            SmallText(text: "Prix:19M FR"),
+                            const SizedBox(width: 10),
+
+                            const SizedBox(width: 10),
+                            SmallText(text: "Lieux:Lome"),
+                          ],
+                        ),
+                        //const SizedBox(height: 20),
+                        FloatingActionButton.extended(
+                          onPressed: () {},
+                          icon: const Icon(Icons.call_end_outlined),
+                          label: const Text('92882303'),
+                          backgroundColor: Colors.indigoAccent,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+
+            //deusiee photo
+              Container(
+                height: Dimension.pageViewContainer,
+                margin: const EdgeInsets.only(left: 11, right: 12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  //color: index.isEven ? const Color(0xFF69c5df) : const Color(0xFF9294cc),
+                  image: const DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/image/TP1.jpeg"),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: Dimension.pageViewTextContainer,
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(31),
+                    color: Colors.white,
+                    // Create the shadow on the white container of the photo
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0xFFe8e8e8),
+                        blurRadius: 10.0,
+                        offset: Offset(0, 5),
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-5, 0),
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-5, 0),
+                      ),
+                    ],
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 3, left: 15, right: 3),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Big_Text(text: "ODI rS3"),
+                        const SizedBox(height: 1),
+                        Row(
+                          children: [
+                            // Wrap(
+                            //   children: List.generate(
+                            //     5,
+                            //         (index) {
+                            //       return const Icon(
+                            //         Icons.star,
+                            //         color: Colors.green,
+                            //         // color: AppColors.mainColor,
+                            //         size: 15,
+                            //       );
+                            //     },
+                            //   ),
+                            // ),
+                            const SizedBox(width: 10),
+                            SmallText(text: "Prix:9M FR"),
+                            const SizedBox(width: 10),
+
+                            const SizedBox(width: 10),
+                            SmallText(text: "Lieux:Lome"),
+                          ],
+                        ),
+                        //SmallText(text:"pour plus d'info contacter nous"),
+                        //const SizedBox(height: 20),
+                        FloatingActionButton.extended(
+                          onPressed: () {},
+                          icon: const Icon(Icons.call_end_outlined),
+                          label: const Text('92882303'),
+                          backgroundColor: Colors.indigoAccent,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+            //troisieme photo
+              Container(
+                height: Dimension.pageViewContainer,
+                margin: const EdgeInsets.only(left: 11, right: 12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  //color: index.isEven ? const Color(0xFF69c5df) : const Color(0xFF9294cc),
+                  image: const DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/image/th.jpeg"),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: Dimension.pageViewTextContainer,
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(31),
+                    color: Colors.white,
+                    // Create the shadow on the white container of the photo
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0xFFe8e8e8),
+                        blurRadius: 10.0,
+                        offset: Offset(0, 5),
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-5, 0),
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-5, 0),
+                      ),
+                    ],
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 2, left: 15, right: 3),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Big_Text(text: "2 lot "),
+                        const SizedBox(height: 1),
+                        Row(
+                          children: [
+                            // Wrap(
+                            //   children: List.generate(
+                            //     5,
+                            //         (index) {
+                            //       return const Icon(
+                            //         Icons.star,
+                            //         color: Colors.green,
+                            //         // color: AppColors.mainColor,
+                            //         size: 15,
+                            //       );
+                            //     },
+                            //   ),
+                            // ),
+                            const SizedBox(width: 10),
+                            SmallText(text: "Prix:25M de Fr"),
+                            const SizedBox(width: 10),
+
+                            const SizedBox(width: 10),
+                            SmallText(text: "Lieux:Lome zanguera"),
+                          ],
+                        ),
+                        //const SizedBox(height: 20),
+                        FloatingActionButton.extended(
+                          onPressed: () {},
+                          icon: const Icon(Icons.call_end_outlined),
+                          label: const Text('92882303'),
+                          backgroundColor: Colors.green,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+
+            //quartieme photo
+
+              Container(
+                height: Dimension.pageViewContainer,
+                margin: const EdgeInsets.only(left: 11, right: 12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  //color: index.isEven ? const Color(0xFF69c5df) : const Color(0xFF9294cc),
+                  image: const DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/image/TP.jpeg"),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: Dimension.pageViewTextContainer,
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(31),
+                    color: Colors.white,
+                    // Create the shadow on the white container of the photo
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0xFFe8e8e8),
+                        blurRadius: 10.0,
+                        offset: Offset(0, 5),
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-5, 0),
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-5, 0),
+                      ),
+                    ],
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 1, left: 15, right: 3),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Big_Text(text: "VILLA"),
+                        const SizedBox(height: 1),
+                        Row(
+                          children: [
+                            // Wrap(
+                            //   children: List.generate(
+                            //     5,
+                            //         (index) {
+                            //       return const Icon(
+                            //         Icons.star,
+                            //         color: Colors.green,
+                            //         // color: AppColors.mainColor,
+                            //         size: 15,
+                            //       );
+                            //     },
+                            //   ),
+                            // ),
+                            const SizedBox(width: 10),
+                            SmallText(text: "Prix:"),
+                            const SizedBox(width: 10),
+
+                            const SizedBox(width: 10),
+                            SmallText(text: "Lieu:Lome"),
+                          ],
+                        ),
+                        //const SizedBox(height: 20),
+                        FloatingActionButton.extended(
+                          onPressed: () {},
+                          icon: const Icon(Icons.call_end_outlined),
+                          label: const Text('92882303'),
+                          backgroundColor: Colors.indigoAccent,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+
+
+
             //ArtList(user: user!.uid)
-            ],
-          ),
-        ),
-      ],
+],
+
+
+    ),
+
+
+    ),
+    ]
     );
+
+
   }
 
   Widget _buildPageItem(int index) {
@@ -138,6 +476,7 @@ class ArticleState extends State<Article> {
               image: const DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage("assets/image/B1.jpg"),
+
               ),
             ),
           ),
@@ -171,7 +510,7 @@ class ArticleState extends State<Article> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Big_Text(text: "Contact Us"),
+                    Big_Text(text: "Contacter Nous"),
                     const SizedBox(height: 1),
                     Row(
                       children: [
