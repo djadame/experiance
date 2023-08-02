@@ -40,7 +40,7 @@ void main() async {
         ),
         StreamProvider<List<Art>>.value(
             initialData: const [],
-            value: DbService().getArtByuserID(),
+            value: DbService().getArt(),//getArtByuserID(),
         )
       ],
       child: const MyApp(),

@@ -143,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
           slivers: [
             HomeAppBar(user: user),
             AddSection(user: user),
-            ArticleList(userID: user!.uid),
+            ArticleList(userID: user!.uid, pageName: '',),
           ],
         ),
       ),

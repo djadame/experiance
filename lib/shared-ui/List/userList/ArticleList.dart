@@ -7,8 +7,8 @@ import '../../../model/Art.dart';
 
 
 class ArticleList extends StatelessWidget {
-  final String userID;
-  const ArticleList({super.key,  required this.userID});
+  final String pageName, userID;
+  const ArticleList({super.key,  required this.userID, required this.pageName});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,11 @@ class ArticleList extends StatelessWidget {
           return StreamBuilder(
             stream: DbService(userID: userID, artID: _art[index].artID).myFavoriteArt,
             builder: (context, snapshot) {
+              if (pageName == '/profile') {
+                if (!snapshot.hasData) return Container();
+                _art[index].isMyFavoriteArt = true;
+                return ArticleFeed(art: _art[index], userID: userID);
+              }
               if(!snapshot.hasData){
                 _art[index].isMyFavoriteArt = false;
                 return ArticleFeed(

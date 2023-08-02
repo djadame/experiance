@@ -5,8 +5,8 @@ import '../../../model/Art.dart';
 import 'ArtFeed.dart';
 
 class ArtList extends StatelessWidget {
-  final String user;
-  const ArtList({Key? key, required this.user}) : super(key: key);
+  final String pageName, user;
+  const ArtList({Key? key, required this.user, required this.pageName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

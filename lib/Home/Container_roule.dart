@@ -1,15 +1,19 @@
 
 
+import 'package:experiance/Service/CallPhone.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:experiance/Widget/Text/Big_text_dart.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:experiance/Widget/Size/Dimention.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Widget/Text/Small_text.dart';
 import '../shared-ui/List/popularlist/ArtList.dart';
+import '../shared-ui/makecall.dart';
 
 
 
@@ -49,10 +53,26 @@ class ArticleState extends State<Article> {
     super.dispose();
   }
 
+  void _makePhoneCall(
+      String phoneNumber
+      ) async {
+    //const phoneNumber = '+22893380145'; // Numéro de téléphone à appeler
+    final Uri _url = Uri.parse('tel:$phoneNumber');
+    if (await Permission.phone.request().isGranted){
+      if (await canLaunchUrl(_url)) {
+        await launchUrl(_url);
+      } else {
+        throw 'Impossible de passer l\'appel au numéro $phoneNumber';
+      }
+    }else{
+      throw 'Permission refusée';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User?>(context);
-
+    String? num = '93380145';
     return Column(
       children: [
         SizedBox(
@@ -107,6 +127,7 @@ class ArticleState extends State<Article> {
                     image: AssetImage("assets/image/R.jpeg"),
                   ),
                 ),
+
               ),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -165,9 +186,9 @@ class ArticleState extends State<Article> {
                         ),
                         //const SizedBox(height: 20),
                         FloatingActionButton.extended(
-                          onPressed: () {},
+                          onPressed: () => _makePhoneCall(num!),
                           icon: const Icon(Icons.call_end_outlined),
-                          label: const Text('92882303'),
+                          label: const Text('93380145'),
                           backgroundColor: Colors.indigoAccent,
                         ),
                       ],
@@ -248,9 +269,9 @@ class ArticleState extends State<Article> {
                         //SmallText(text:"pour plus d'info contacter nous"),
                         //const SizedBox(height: 20),
                         FloatingActionButton.extended(
-                          onPressed: () {},
+                          onPressed: () => _makePhoneCall(num!),
                           icon: const Icon(Icons.call_end_outlined),
-                          label: const Text('92882303'),
+                          label: const Text('93380145'),
                           backgroundColor: Colors.indigoAccent,
                         ),
                       ],
@@ -298,7 +319,7 @@ class ArticleState extends State<Article> {
                     ],
                   ),
                   child: Container(
-                    padding: const EdgeInsets.only(top: 2, left: 15, right: 3),
+                    padding: const EdgeInsets.only(top: 1, left: 15, right: 3),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -329,9 +350,9 @@ class ArticleState extends State<Article> {
                         ),
                         //const SizedBox(height: 20),
                         FloatingActionButton.extended(
-                          onPressed: () {},
+                          onPressed: () => _makePhoneCall(num!),
                           icon: const Icon(Icons.call_end_outlined),
-                          label: const Text('92882303'),
+                          label: const Text('93380145'),
                           backgroundColor: Colors.green,
                         ),
                       ],
@@ -412,9 +433,9 @@ class ArticleState extends State<Article> {
                         ),
                         //const SizedBox(height: 20),
                         FloatingActionButton.extended(
-                          onPressed: () {},
+                          onPressed: () => _makePhoneCall(num!),
                           icon: const Icon(Icons.call_end_outlined),
-                          label: const Text('92882303'),
+                          label: const Text('93380145'),
                           backgroundColor: Colors.indigoAccent,
                         ),
                       ],

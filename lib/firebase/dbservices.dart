@@ -177,7 +177,7 @@ class DbService {
   }
 
   // suppression de la voiture
-  Future<void> deleteCar(String carID) => _art.doc(carID).delete();
+  Future<void> deleteArt(String carID) => _art.doc(carID).delete();
 
   Future<Art> singleCar(String carID) async {
     final doc = await _art.doc(carID).get();

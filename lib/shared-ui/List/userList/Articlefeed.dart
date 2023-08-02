@@ -19,20 +19,25 @@ class ArticleFeed extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              //width: MediaQuery.of(context).size.width * 0.9,
-              margin: const  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                image: DecorationImage(
-                  image: NetworkImage(art!.artUrlImg!),
-                  fit: BoxFit.cover,
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, '/detail', arguments: art),
+                child: Container(
+                height: MediaQuery.of(context).size.height * 0.4,
+                //width: MediaQuery.of(context).size.width * 0.9,
+                margin: const  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                  image: DecorationImage(
+                    image: NetworkImage(art!.artUrlImg!),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
             ),
+              ),
             Favorit(art: art, userID: userID,),
-              CallerPhone(art: art, userID: userID,)
+              const CallerPhone(
+               // art: art, userID: userID,
+              )
             ]
           ),
           Padding(
@@ -110,11 +115,14 @@ class ArticleFeed extends StatelessWidget {
                       Row(
                         children: [
                           const Icon(Icons.person), // Icône d'heure
-                          Text(
-                             ' :${art!.artUserName!.toUpperCase()}',
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                          FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                               ' :${art!.artUserName!.substring(0,5)}...',
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],
